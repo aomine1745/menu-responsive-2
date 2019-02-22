@@ -1,6 +1,9 @@
-body{
+*{
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
+}
+body{
 	font-family: sans-serif;
 }
 .transition{
@@ -13,39 +16,57 @@ header{
 	position: absolute;
 	top: 0;
 	left: 0;
-	padding: 0 100px;
+	padding: 0 50px;
 	background-color: #262626;
 	width: 100%;
 	box-sizing: border-box;
 }
 header .logo{
 	color: #fff;
-	height: 50px;
-	line-height: 50px;
 	font-size: 24px;
 	float: left;
 	font-weight: bold;
-}
-header nav{
-	float: right;
+	padding: 15px 0 0;
 }
 header nav ul{
-	margin: 0;
-	padding: 0;
 	display: flex;
+	justify-content: flex-end;
 }
 header nav ul li{
 	list-style: none;
+	position: relative;
+}
+header nav ul li.subMenu .drop:after{
+	content: '\f0dd';
+	font-family:"Font Awesome 5 Free";
+	font-weight: 900;
+	position: absolute;
+	transform: translate(5px, -2px);
+}
+header nav ul li.subMenu.active .drop:after{
+	content: '\f0d8';
+	transform: translateX(5px);
+}
+header nav ul li ul{
+	position: absolute;
+	/*left: 0;*/
+	background-color: #333;
+	display: none;
+}
+header nav ul li.active ul{
+	display: block;
+}
+header nav ul li ul li{
+	width: 200px;
+	display: block;
 }
 header nav ul li a{
-	height: 50px;
-	line-height: 50px;
-	padding: 0 20px;
+	padding: 20px;
 	color: #ccc;
 	text-decoration: none;
 	display: block;
 }
-header nav ul li a:hover{
+header nav ul li a:hover, header nav ul li a:hover i{
 	color: #fff;
 	background-color: #2196f3;
 }
@@ -60,7 +81,7 @@ header nav ul li a.active{
 	cursor: pointer;
 	display: none;
 }
-@media (max-width: 992px){
+@media (max-width: 768px){
 	header{
 		padding: 0 20px;
 	}
@@ -82,5 +103,15 @@ header nav ul li a.active{
 	header nav ul{
 		display: block;
 		text-align:center;
+	}
+	header nav ul li a{
+		border-bottom: 1px solid rgba(0, 0, 0, .2);
+	}
+	header nav ul li.active ul{
+		position: relative; 
+		background-color: #003e6f;
+	}
+	header nav ul li ul li{
+		width: 100%;
 	}
 }
